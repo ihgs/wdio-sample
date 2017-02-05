@@ -1,0 +1,29 @@
+{
+  "name": "wdio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf -rf build",
+    "start": "npm run start-serve & npm run watch",
+    "start-serve": "browser-sync start --server build/ --files build/**/*",
+    "build": "npm-run-all build:browserify build:copy",
+    "build:copy": "cpx src/index.html build",
+    "build:browserify": "mkdirp build/js && browserify src/js/main.js > build/js/bundle.js",
+    "watch": "watch 'npm run build' src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.1.1"
+  },
+  "devDependencies": {
+    "browserify": "^14.0.0",
+    "cpx": "^1.5.0",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.0.1",
+    "rimraf": "^2.5.4",
+    "watch": "^1.0.1"
+  }
+}
